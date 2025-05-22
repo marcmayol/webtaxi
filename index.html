@@ -1,5 +1,6 @@
-<html>
+<html lang="en">
 <head>
+    <title>Taxi 21 Cala Rajada – Airport Transfers & Local Rides</title>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""/>
     <link
             rel="stylesheet"
@@ -7,13 +8,47 @@
             onload="this.rel='stylesheet'"
             href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
     />
-
-    <title>Taxi 21 Cala Ratjada</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,"/>
+    <link rel="icon" href="/img/taxi21_icon.ico" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="marc mayol orell"/>
+    <meta name="publisher" content="Taxi 21 Cala Rajada"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="description"
+          content="Reliable and professional Taxi services in Cala Rajada, Cala Agulla, Capdepera, and Sa Font de Sa Cala. Book your airport transfer or local ride in Mallorca today."/>
+
+    <!-- Palabras clave SEO -->
+    <meta name="keywords"
+          content="Taxi Cala Rajada, Mallorca airport transfer, Capdepera Taxi, Cala Agulla taxi, Sa Font de Sa Cala transport, Taxi 21 Cala Rajada, door-to-door taxi Mallorca, book taxi Mallorca Airport"/>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Taxi 21 Cala Rajada",
+            "url": "https://taxicalaratjada.es/",
+            "logo": "https://taxicalaratjada.es/img/logo_negro_tranparente.png",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "contactType": "Customer Service",
+                    "url": "https://wa.me/34645329809",
+                    "name": "WhatsApp"
+                },
+                {
+                    "@type": "ContactPoint",
+                    "contactType": "Customer Support",
+                    "telephone": "+34 645 32 98 09",
+                    "name": "Phone"
+                }
+            ]
+        }
+    </script>
+
 </head>
-<body>
+<body itemscope itemtype="https://schema.org/LocalBusiness">
 <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
     <div class="layout-container flex h-full grow flex-col">
@@ -22,17 +57,19 @@
                 <div class="w-10 h-10 flex-shrink-0">
                     <img
                             src="/img/logo_negro_tranparente.png"
-                            alt="Taxi 21 Cala Ratjada"
+                            alt="Taxi 21 Cala Ratjada car"
                             class="w-full h-full object-contain"
+                            title="Taxi 21 Cala Ratjada car"
                     />
                 </div>
-                <h2 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">
+                <strong class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">
                     Taxi 21 Cala Ratjada
-                </h2>
+                </strong>
             </div>
             <div class="flex flex-1 justify-end gap-8">
-                <div class="flex gap-2">
-                    <a href="tel:+34645329809"
+                <div class="flex gap-2" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
+                    <meta itemprop="contactType" content="Customer Suport">
+                    <a href="tel:+34645329809" itemprop="url" title="phone"
                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1473cc] text-white text-sm font-bold leading-normal tracking-[0.015em]"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
@@ -67,8 +104,10 @@
                                     in Mallorca.
                                 </h2>
                             </div>
-                            <div class="flex-wrap gap-3 flex">
-                                <a href="tel:+34645329809"
+                            <div class="flex-wrap gap-3 flex" itemprop="contactPoint" itemscope
+                                 itemtype="https://schema.org/ContactPoint">
+                                <meta itemprop="contactType" content="Customer Suport">
+                                <a href="tel:+34645329809" itemprop="url" title="phone"
                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#1473cc] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -79,10 +118,11 @@
                                     </svg>
                                     <span class="truncate  pl-1">Call Now</span>
                                 </a>
-                                <a href="https://wa.me/34645329809" target="_blank"
+                                <meta itemprop="contactType" content="Customer Service">
+                                <a href="https://wa.me/34645329809" itemprop="url" target="_blank" rel="noopener" title="whatsapp"
                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#047a36] text-[#FFFFFF] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
                                 >
-                                    <div class="text-[#121712]" data-icon="WhatsappLogo" data-size="20px"
+                                    <div class="text-[#FFFFFF]" data-icon="WhatsappLogo" data-size="20px"
                                          data-weight="regular">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                                              fill="currentColor" viewBox="0 0 256 256">
@@ -109,7 +149,7 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h2 class="text-[#111518] text-base font-bold leading-tight">Door-to-Door Service</h2>
+                        <h3 class="text-[#111518] text-base font-bold leading-tight">Door-to-Door Service</h3>
                     </div>
                     <div class="flex flex-1 gap-3 rounded-lg border border-[#dce1e5] bg-white p-4 items-center">
                         <div class="text-[#111518]" data-icon="Airplane" data-size="24px" data-weight="regular">
@@ -120,7 +160,7 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h2 class="text-[#111518] text-base font-bold leading-tight">Airport Pickup</h2>
+                        <h3 class="text-[#111518] text-base font-bold leading-tight">Airport Pickup</h3>
                     </div>
                     <div class="flex flex-1 gap-3 rounded-lg border border-[#dce1e5] bg-white p-4 items-center">
                         <div class="text-[#111518]" data-icon="Bed" data-size="24px" data-weight="regular">
@@ -131,7 +171,7 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h2 class="text-[#111518] text-base font-bold leading-tight">Hotel-Airport Transfers</h2>
+                        <h3 class="text-[#111518] text-base font-bold leading-tight">Hotel-Airport Transfers</h3>
                     </div>
                 </div>
                 <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
@@ -161,8 +201,11 @@
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 max-w-[480px] justify-center">
-                        <a href="tel:+34645329809z"
+                    <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 max-w-[480px] justify-center"
+                         itemprop="contactPoint" itemscope
+                         itemtype="https://schema.org/ContactPoint">
+                        <meta itemprop="contactType" content="Customer Suport">
+                        <a href="tel:+34645329809" itemprop="url" title="phone"
                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1473cc] text-white text-sm font-bold leading-normal tracking-[0.015em] grow"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
@@ -173,10 +216,11 @@
                             </svg>
                             <span class="truncate pl-1"> Call Now</span>
                         </a>
-                        <a href="https://wa.me/34645329809" target="_blank"
+                        <meta itemprop="contactType" content="Customer Service">
+                        <a href="https://wa.me/34645329809" itemprop="url" target="_blank" rel="noopener" title="whatsapp"
                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#047a36] text-[#FFFFFF] text-sm font-bold leading-normal tracking-[0.015em] grow"
                         >
-                            <div class="text-[#121712]" data-icon="WhatsappLogo" data-size="20px" data-weight="regular">
+                            <div class="text-[#FFFFFF]" data-icon="WhatsappLogo" data-size="20px" data-weight="regular">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
                                      viewBox="0 0 256 256">
                                     <path
