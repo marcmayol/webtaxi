@@ -1,8 +1,0 @@
-@import "/flag-icons-main/css/flag-icons.min.css";
-
-#cabecera {
-    background-image: url("/img/foto-taxi.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-   background-position: -100px;
-}
