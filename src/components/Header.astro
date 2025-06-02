@@ -1,0 +1,65 @@
+---
+import {changeroutelang, getLangFromUrl, useTranslations,} from '../i18n/utils';
+import {languages} from '../i18n/ui';
+import {Globe} from '@lucide/astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-2 px-md-5  py-3 ">
+    <div class="flex items-center text-[#111518]">
+
+            <div class="w-10 h-10 flex-shrink-0">
+            <img
+                    src="/img/logo_negro_tranparente.png"
+                    alt="Taxi 21 Cala Ratjada car"
+                    class="w-full h-full object-contain"
+                    title="Taxi 21 Cala Ratjada car"
+            />
+        </div>
+        <strong class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">
+            <a href={"/"+lang} title="home"> Taxi 21 Cala Ratjada </a>
+        </strong>
+
+    </div>
+    <div class="flex flex-1 justify-end gap-8">
+        <div class="flex gap-2" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
+            <button role="button" title="select language" id="languageButton" data-languageButton
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#1473cc] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+                <Globe/>
+                <span class=" hidden md:flex truncate  pl-1"> {t('nav.button')}</span>
+            </button>
+        </div>
+    </div>
+
+</header>
+<nav data-langmenu id="langmenu" class="flex items-center bg-white hidden">
+    <ul class="py-1 w-full bg-gray-100" role="menu" aria-orientation="vertical">
+        {
+            Object.entries(languages).filter(([code]) => code !== lang).map(([code, label]) => (
+                    <li class=" w-full text-center"><a href={changeroutelang(Astro.url, code)}
+                                                       class="block px-4 py-2 text-md text-gray-700 hover:bg-gray-200 transition"
+                                                       role="menuitem"> <span class="border-b-2 border-current pb-1">{label}</span></a></li>
+            ))
+        }
+
+    </ul>
+</nav>
+
+<script is:inline>
+    let langbutton = document.getElementById('languageButton');
+    let langmenu = document.getElementById('langmenu');
+
+    langbutton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langmenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!langmenu.contains(e.target) && !langbutton.contains(e.target)) {
+            langmenu.classList.add('hidden');
+        }
+    });
+</script>
