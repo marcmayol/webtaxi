@@ -92,15 +92,11 @@ const item = {
         <Header/>
         <div class="px-40 flex flex-1 justify-center py-5">
             <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-                <div class="flex flex-wrap justify-between gap-3 p-4">
-                    <div class="flex min-w-72 flex-col gap-3">
-                        <h1 class="text-[#121712] tracking-light text-[32px] font-bold leading-tight">Our Services</h1>
-                        <p class="text-[#121712] text-base font-normal leading-normal pt-5">
-                            We offer a range of taxi services tailored to your needs in Mallorca. Whether you need a
-                            ride to or from the airport, or a transfer between locations, we've got
-                            you covered.
-                        </p>
-                    </div>
+                <div class="flex min-w-72 flex-col gap-3">
+                    <h1 class="text-[#121712] tracking-light text-[32px] font-bold leading-tight">{t('service.title')}</h1>
+                    <p class="text-[#121712] text-base font-normal leading-normal pt-5">
+                        {t('service.desc')}
+                    </p>
                 </div>
                 <div class="flex flex-1 w-1/2 rounded-lg  bg-white p-4 pt-7 items-center">
                     <div class="text-[#111518]" data-icon="Bed" data-size="24px" data-weight="regular">

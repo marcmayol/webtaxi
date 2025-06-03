@@ -57,7 +57,8 @@ export const ui = {
         "about.chooseus.3": "Conductores amables",
         "about.contact.desc": "Para consultas o reservas, contáctanos. ¡Estaremos encantados de atenderte!",
         "footer.service": "Servicios",
-        "footer.about": "Sobre nosotros"
+        "footer.about": "Sobre nosotros",
+        "service.desc": "Ofrecemos una variedad de servicios de taxi adaptados a tus necesidades en Mallorca. Ya sea para ir o volver del aeropuerto, o para desplazarte entre localidades, estamos aquí para ayudarte."
 
 
     },
@@ -114,6 +115,9 @@ export const ui = {
         'about.contact.desc': 'For inquiries or to book a ride, please contact. We look forward to serving you!',
         'footer.service': 'Services',
         'footer.about': 'About us',
+        'service.desc': "We offer a range of taxi services tailored to your needs in Mallorca. Whether you need a ride to or from the airport, or a transfer between locations, we've gotyou covered.",
+
+
     },
     fr: {
         "seo.keywords": "Taxi Cala Rajada, transfert aéroport Majorque, Taxi Capdepera, taxi Cala Agulla, transport Sa Font de Sa Cala, Taxi 21 Cala Rajada, taxi porte-à-porte Majorque, réserver taxi aéroport Majorque",
@@ -126,6 +130,7 @@ export const ui = {
         'header.call': 'Appeler',
         'header.whatsapp': 'WhatsApp',
         'service.title': 'Services de Taxi',
+        "service.desc": "Nous proposons une gamme de services de taxi adaptés à vos besoins à Majorque. Que ce soit pour un trajet vers ou depuis l’aéroport, ou un transfert entre différents lieux, nous sommes là pour vous.",
         'service.primerotitle': 'Service porte-à-porte',
         'service.primerodesc': 'Profitez du confort de notre service de taxi porte-à-porte à Cala Rajada et ses environs. Nous vous emmenons de votre domicile à votre destination en toute tranquillité.',
         'service.segundotitle': "Prise en charge à l'aéroport",
@@ -166,10 +171,7 @@ export const ui = {
         "about.chooseus.3": "Chauffeurs sympathiques",
         "about.contact.desc": "Pour toute question ou réservation, veuillez nous contacter. Nous serons ravis de vous servir !",
         "footer.service": "Services",
-        "footer.about": "À propos"
-
-
-
+        "footer.about": "À propos",
     },
     de: {
         "seo.keywords": "Taxi Cala Rajada, Flughafentransfer Mallorca, Taxi Capdepera, Taxi Cala Agulla, Transport Sa Font de Sa Cala, Taxi 21 Cala Rajada, Tür-zu-Tür-Taxi Mallorca, Taxi Flughafen Mallorca buchen",
@@ -222,8 +224,7 @@ export const ui = {
         "about.chooseus.3": "Freundliche Fahrer",
         "about.contact.desc": "Für Anfragen oder Buchungen kontaktieren Sie uns bitte. Wir freuen uns darauf, Sie zu bedienen!",
         "footer.service": "Leistungen",
-        "footer.about": "Über uns"
-
-
+        "footer.about": "Über uns",
+        "service.desc": "Wir bieten eine Vielzahl von Taxiservices, die auf Ihre Bedürfnisse auf Mallorca zugeschnitten sind. Ob zum oder vom Flughafen oder für Fahrten zwischen verschiedenen Orten – wir sind für Sie da."
     }
 };
