@@ -1,5 +1,13 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const year = new Date().getFullYear();
+let langCode = Astro.currentLocale;
+console.log('Current locale:', Astro.currentLocale);
+if(langCode == undefined || !["en", "es", "fr", "de"].includes(langCode)) {
+	langCode = 'en';
+}
+const lang = getLangFromUrl(Astro.url) || langCode;
+const t = useTranslations(lang);
 ---
 
 <footer class="flex justify-center pt-5">
@@ -28,9 +36,16 @@ const year = new Date().getFullYear();
 					</div>
 				</a>
 			</div>
-			<p class="text-[#637688] text-base font-normal leading-normal"> &copy; <span id="year">{year}</span> Taxi
-				21 Cala Ratjada. All rights reserved.</p>
-			<p class="text-[#637688]"><a href="https://marcmayol/es" title="marcmayol">Created by Marc Mayol with  <span class="px-2 text-[#000000]">&#9829;</span>  from <span class="text-[#000000]">&#x1F334;</span> Mallorca </a> </p>
+			<div class="flex flex-wrap justify-center gap-4">
+				<a href={"/"+lang+"/about"}  title="about" class="text-base underline">
+					{t('footer.about')}
+				</a>
+				<a href={"/"+lang+"/services"} title="services" class=" text-base underline">
+					{t('footer.service')}
+				</a>
+			</div>
+			<p class="text-[#637688] text-sm font-normal leading-normal"> &copy; <span id="year">{year}</span> Taxi 21 Cala Ratjada. All rights reserved.</p>
+			<p class="text-[#637688] text-sm"><a href="https://marcmayol/es" title="marcmayol">Created by Marc Mayol with  <span class="px-2 text-[#000000]">&#9829;</span>  from <span class="text-[#000000]">&#x1F334;</span> Mallorca </a> </p>
 		</footer>
 	</div>
 </footer>

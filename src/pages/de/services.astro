@@ -1,0 +1,153 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {SITE_TITLE, SITE_DESCRIPTION} from '../../consts';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
+let langCode = Astro.currentLocale;
+console.log('Current locale:', Astro.currentLocale);
+if (langCode == undefined || !["en", "es", "fr", "de"].includes(langCode)) {
+    langCode = 'en';
+}
+const lang = getLangFromUrl(Astro.url) || langCode;
+Astro.redirect('/' + lang);
+const t = useTranslations(lang);
+const item = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "TaxiService",
+            "@id": "https://www.taxicalaratjada.es/",
+            "name": "Taxi 21 Cala Ratjada",
+            "url": "https://www.taxicalaratjada.es/",
+            "logo": "https://www.taxicalaratjada.es/img/logo_negro_tranparente.png",
+            "telephone": "+34 987 654 321",
+            "email": "mariayxiscotaxi21@gmail.com",
+        },
+        {
+            "@type": "Service",
+            "serviceType": t('service.primerotitle'),
+            "provider": {
+                "@id": "https://www.taxicalaratjada.es/",
+            },
+            "areaServed": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Cala Ratjada",
+                    "addressCountry": "ES"
+                }
+            },
+            "description": t('service.primerodesc'),
+            "availableChannel": {
+                "@type": "ServiceChannel",
+                "serviceUrl": "https://www.taxicalaratjada.es/",
+                "availableLanguage": ["es","en","de","fr"]
+            }
+        },
+        {
+            "@type": "Service",
+            "serviceType": t('service.segundotitle'),
+            "provider": {
+                "@id": "https://www.taxicalaratjada.es/"
+            },
+            "description": t('service.segundodesc'),
+            "availableChannel": {
+                "@type": "ServiceChannel",
+                "servicePhone": {
+                    "@type": "ContactPoint",
+                    "telephone": "+34 987 654 321",
+                    "contactType": "customer service",
+                    "availableLanguage": "es"
+                }
+            }
+        },
+        {
+            "@type": "Service",
+            "serviceType":  t('service.tercerotitle'),
+            "provider": {
+                "@id": "https://www.taxicalaratjada.es/"
+            },
+            "description": t('service.tercerodesc'),
+            "availableChannel": {
+                "@type": "ServiceChannel",
+                "serviceUrl": "https://www.taxicalaratjada.es/",
+                "availableLanguage":  ["es","en","de","fr"]
+            }
+        }
+    ]
+}
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+    <BaseHead title={t('seo.title')} description={t('seo.description')} item={item}
+              image="/img/logo_negro_tranparente.png" keywords={t('seo.keywords')}/>
+</head>
+<body itemscope itemtype="https://schema.org/LocalBusiness">
+<div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden"
+     style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+        <Header/>
+        <div class="px-40 flex flex-1 justify-center py-5">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="flex flex-wrap justify-between gap-3 p-4">
+                    <div class="flex min-w-72 flex-col gap-3">
+                        <h1 class="text-[#121712] tracking-light text-[32px] font-bold leading-tight">Our Services</h1>
+                        <p class="text-[#121712] text-base font-normal leading-normal pt-5">
+                            We offer a range of taxi services tailored to your needs in Mallorca. Whether you need a
+                            ride to or from the airport, or a transfer between locations, we've got
+                            you covered.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-1 w-1/2 rounded-lg  bg-white p-4 pt-7 items-center">
+                    <div class="text-[#111518]" data-icon="Bed" data-size="24px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                             viewBox="0 0 256 256">
+                            <path
+                                    d="M240,112H229.2L201.42,49.5A16,16,0,0,0,186.8,40H69.2a16,16,0,0,0-14.62,9.5L26.8,112H16a8,8,0,0,0,0,16h8v80a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V192h96v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V128h8a8,8,0,0,0,0-16ZM69.2,56H186.8l24.89,56H44.31ZM64,208H40V192H64Zm128,0V192h24v16Zm24-32H40V128H216ZM56,152a8,8,0,0,1,8-8H80a8,8,0,0,1,0,16H64A8,8,0,0,1,56,152Zm112,0a8,8,0,0,1,8-8h16a8,8,0,0,1,0,16H176A8,8,0,0,1,168,152Z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-[#111518] text-base font-bold leading-tight px-2">{t('service.primerotitle')}</h2>
+                </div>
+                <p class="text-[#121712] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                    {t('service.primerodesc')}
+                </p>
+                <div class="flex flex-1 w-1/2 rounded-lg  bg-white p-4 pt-7 items-center">
+                    <div class="text-[#111518]" data-icon="Bed" data-size="24px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                             viewBox="0 0 256 256">
+                            <path
+                                    d="M235.58,128.84,160,91.06V48a32,32,0,0,0-64,0V91.06L20.42,128.84A8,8,0,0,0,16,136v32a8,8,0,0,0,9.57,7.84L96,161.76v18.93L82.34,194.34A8,8,0,0,0,80,200v32a8,8,0,0,0,11,7.43l37-14.81,37,14.81A8,8,0,0,0,176,232V200a8,8,0,0,0-2.34-5.66L160,180.69V161.76l70.43,14.08A8,8,0,0,0,240,168V136A8,8,0,0,0,235.58,128.84ZM224,158.24l-70.43-14.08A8,8,0,0,0,144,152v32a8,8,0,0,0,2.34,5.66L160,203.31v16.87l-29-11.61a8,8,0,0,0-5.94,0L96,220.18V203.31l13.66-13.65A8,8,0,0,0,112,184V152a8,8,0,0,0-9.57-7.84L32,158.24v-17.3l75.58-37.78A8,8,0,0,0,112,96V48a16,16,0,0,1,32,0V96a8,8,0,0,0,4.42,7.16L224,140.94Z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-[#111518] text-base font-bold leading-tight px-2">{t('service.segundotitle')}</h2>
+                </div>
+                <p class="text-[#121712] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                    {t('service.segundodesc')}
+                </p>
+                <div class="flex flex-1 w-1/2 rounded-lg  bg-white p-4 pt-7 items-center">
+                    <div class="text-[#111518]" data-icon="Bed" data-size="24px" data-weight="regular">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                             viewBox="0 0 256 256">
+                            <path
+                                    d="M208,72H24V48A8,8,0,0,0,8,48V208a8,8,0,0,0,16,0V176H232v32a8,8,0,0,0,16,0V112A40,40,0,0,0,208,72ZM24,88H96v72H24Zm88,72V88h96a24,24,0,0,1,24,24v48Z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-[#111518] text-base font-bold leading-tight px-2">{t('service.tercerotitle')}</h2>
+                </div>
+                <p class="text-[#121712] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                    {t('service.tercerodesc')}
+                </p>
+            </div>
+        </div>
+    </div>
+    <Footer/>
+</div>
+</body>
+</html>

@@ -9,7 +9,6 @@ export function getLangFromUrl(url: URL) {
 }
 export function useTranslations(lang: keyof typeof ui) {
     return function t(key: keyof typeof ui[typeof defaultLang]) {
-        console.log("lang", lang);
         return key in ui[lang] ? (ui[lang] as any)[key] : ui[defaultLang][key];
     }
 }
@@ -17,10 +16,15 @@ export function useTranslations(lang: keyof typeof ui) {
 export function  changeroutelang(url: URL, lang: any) {
 
     const parts = url.pathname.split('/');
+
     if (parts.length <= 2 && parts.every(p => p === '')) {
         return `/${lang}`;
     }
-    if (parts[0] === '' && parts[1]) {
+    if (parts.length <= 2 && parts[0] === '' && parts[1]) {
+        if (parts[1] in ui) {
+            parts[1] = lang;
+            return `/${parts[1]}}`;
+        }
         return `/${lang}/${parts[1]}`;
     }
 

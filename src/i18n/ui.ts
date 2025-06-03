@@ -55,8 +55,9 @@ export const ui = {
         "about.chooseus.1": "Viajes cómodos",
         "about.chooseus.2": "Servicio puntual",
         "about.chooseus.3": "Conductores amables",
-        "about.contact.desc": "Para consultas o reservas, contáctanos. ¡Estaremos encantados de atenderte!"
-
+        "about.contact.desc": "Para consultas o reservas, contáctanos. ¡Estaremos encantados de atenderte!",
+        "footer.service": "Servicios",
+        "footer.about": "Sobre nosotros"
 
 
     },
@@ -111,6 +112,8 @@ export const ui = {
         'about.chooseus.2': 'Punctual Service',
         'about.chooseus.3': 'Friendly Drivers',
         'about.contact.desc': 'For inquiries or to book a ride, please contact. We look forward to serving you!',
+        'footer.service': 'Services',
+        'footer.about': 'About us',
     },
     fr: {
         "seo.keywords": "Taxi Cala Rajada, transfert aéroport Majorque, Taxi Capdepera, taxi Cala Agulla, transport Sa Font de Sa Cala, Taxi 21 Cala Rajada, taxi porte-à-porte Majorque, réserver taxi aéroport Majorque",
@@ -161,7 +164,9 @@ export const ui = {
         "about.chooseus.1": "Trajets confortables",
         "about.chooseus.2": "Service ponctuel",
         "about.chooseus.3": "Chauffeurs sympathiques",
-        "about.contact.desc": "Pour toute question ou réservation, veuillez nous contacter. Nous serons ravis de vous servir !"
+        "about.contact.desc": "Pour toute question ou réservation, veuillez nous contacter. Nous serons ravis de vous servir !",
+        "footer.service": "Services",
+        "footer.about": "À propos"
 
 
 
@@ -215,7 +220,10 @@ export const ui = {
         "about.chooseus.1": "Komfortable Fahrten",
         "about.chooseus.2": "Pünktlicher Service",
         "about.chooseus.3": "Freundliche Fahrer",
-        "about.contact.desc": "Für Anfragen oder Buchungen kontaktieren Sie uns bitte. Wir freuen uns darauf, Sie zu bedienen!"
+        "about.contact.desc": "Für Anfragen oder Buchungen kontaktieren Sie uns bitte. Wir freuen uns darauf, Sie zu bedienen!",
+        "footer.service": "Leistungen",
+        "footer.about": "Über uns"
+
 
     }
 };
