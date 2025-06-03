@@ -1,9 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import {SITE_TITLE, SITE_DESCRIPTION} from '../consts';
-import {getLangFromUrl, useTranslations} from '../i18n/utils';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import {SITE_TITLE, SITE_DESCRIPTION} from '../../consts';
+import {getLangFromUrl, useTranslations} from '../../i18n/utils';
 let langCode = Astro.currentLocale;
 console.log('Current locale:', Astro.currentLocale);
 if (langCode == undefined || !["en", "es", "fr", "de"].includes(langCode)) {

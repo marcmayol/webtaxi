@@ -14,23 +14,43 @@ Astro.redirect('/'+lang);
 const t = useTranslations(lang);
 const item =  {
 	"@context": "https://schema.org",
-	"@type": "Organization",
-	"name": "Taxi 21 Cala Rajada",
-	"url": "https://taxicalaratjada.es/",
-	"logo": "https://taxicalaratjada.es/img/logo_negro_tranparente.png",
-	"description":t('seo.description'),
-	"contactPoint": [
+	"@graph": [
 		{
-			"@type": "ContactPoint",
-			"contactType": "Customer Service",
-			"url": "https://wa.me/34645329809",
-			"name": "WhatsApp"
+			"@type": "WebSite",
+			"@id": "https://www.taxicalaratjada.es/",
+			"url": "https://www.taxicalaratjada.es/",
+			"name": "Taxis Madrid Exprés",
+			"description": t('seo.description'),
+			"publisher": {
+				"@id": "https://www.taxicalaratjada.es/"
+			}
 		},
 		{
-			"@type": "ContactPoint",
-			"contactType": "Customer Support",
-			"telephone": "+34 645 32 98 09",
-			"name": "Phone"
+			"@type": "TaxiService",
+			"name": "Taxi 21 Cala Ratjada",
+			"description": "",
+			"image": "https://www.taxicalaratjada.es/img/logo_negro_tranparente.png",
+			"url": Astro.url,
+			"telephone": "+34 987 654 321",
+			"email": "mariayxiscotaxi21@gmail.com",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Carrer Bustamante",
+				"addressLocality": "Cala Rajada, Illes Balears",
+				"postalCode": "07590",
+				"addressCountry": "ES"
+			},
+			"areaServed": {
+				"@type": "Place",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Cala rajada",
+					"addressCountry": "ES"
+				}
+			},
+			"openingHours": [
+				"Mo-Su 00:00-23:59"
+			]
 		}
 	]
 }

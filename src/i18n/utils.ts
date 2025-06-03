@@ -17,9 +17,11 @@ export function useTranslations(lang: keyof typeof ui) {
 export function  changeroutelang(url: URL, lang: any) {
 
     const parts = url.pathname.split('/');
-
     if (parts.length <= 2 && parts.every(p => p === '')) {
         return `/${lang}`;
+    }
+    if (parts[0] === '' && parts[1]) {
+        return `/${lang}/${parts[1]}`;
     }
 
     for (let i = 0; i < parts.length; i++) {
