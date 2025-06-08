@@ -23,7 +23,7 @@ export function  changeroutelang(url: URL, lang: any) {
     if (parts.length <= 2 && parts[0] === '' && parts[1]) {
         if (parts[1] in ui) {
             parts[1] = lang;
-            return `/${parts[1]}}`;
+            return `/${parts[1]}`;
         }
         return `/${lang}/${parts[1]}`;
     }
