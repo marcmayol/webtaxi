@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from "@tailwindcss/vite";
 
@@ -25,7 +24,7 @@ export default defineConfig({
 		'/about/': '/en/about/',
 		'/services/': '/en/services/',
 	},
-	integrations: [mdx(), sitemap({
+	integrations: [sitemap({
 		filter: (page) => /\/(es|en|de|fr)\//.test(page),
 		i18n: {
 			defaultLocale: 'en',
