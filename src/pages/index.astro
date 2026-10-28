@@ -1,0 +1,30 @@
+---
+// Raíz: lleva al idioma del dispositivo (es/de/fr) y, si no coincide ninguno, al inglés.
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Taxi 21 Cala Rajada</title>
+	<meta name="robots" content="noindex, follow" />
+	<link rel="canonical" href="https://taxicalaratjada.es/en/" />
+	<script is:inline>
+		(function () {
+			var supported = ['es', 'en', 'de', 'fr'];
+			var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+			var lang = 'en';
+			for (var i = 0; i < prefs.length; i++) {
+				var code = String(prefs[i]).slice(0, 2).toLowerCase();
+				if (supported.indexOf(code) !== -1) { lang = code; break; }
+			}
+			location.replace('/' + lang + '/');
+		})();
+	</script>
+	<noscript><meta http-equiv="refresh" content="0;url=/en/" /></noscript>
+</head>
+<body>
+	<p><a href="/es/">Español</a> · <a href="/en/">English</a> · <a href="/de/">Deutsch</a> · <a href="/fr/">Français</a></p>
+</body>
+</html>

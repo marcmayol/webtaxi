@@ -1,13 +1,13 @@
 // Datos del negocio que se repiten en toda la web y en el schema.
 export const SITE_URL = 'https://taxicalaratjada.es';
-export const BUSINESS_NAME = 'Taxi 21 Cala Ratjada';
+export const BUSINESS_NAME = 'Taxi 21 Cala Rajada';
 export const PHONE_E164 = '+34645329809';
 export const PHONE_DISPLAY = '+34 645 329 809';
 export const WHATSAPP_URL = 'https://wa.me/34645329809';
 export const EMAIL = 'mariayxiscotaxi21@gmail.com';
 export const BUSINESS_ID = `${SITE_URL}/#business`;
 
-export const AREA_SERVED = ['Cala Ratjada', 'Capdepera', 'Canyamel', 'Cala Mesquida', 'Sa Font de Sa Cala'];
+export const AREA_SERVED = ['Cala Rajada', 'Capdepera', 'Canyamel', 'Cala Mesquida', 'Sa Font de Sa Cala'];
 
 export const LOCALES = ['es', 'en', 'de', 'fr'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -35,7 +35,7 @@ export function businessSchema(lang: Locale, description: string) {
 		address: {
 			'@type': 'PostalAddress',
 			streetAddress: 'Carrer Bustamante',
-			addressLocality: 'Cala Ratjada',
+			addressLocality: 'Cala Rajada',
 			addressRegion: 'Illes Balears',
 			postalCode: '07590',
 			addressCountry: 'ES',

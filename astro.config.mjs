@@ -20,9 +20,8 @@ export default defineConfig({
 			redirectToDefaultLocale: false
 		},
 	},
-	// Las URLs sin idioma llevan a la versión en inglés
+	// /about y /services sin idioma llevan al inglés; la raíz detecta el idioma (src/pages/index.astro)
 	redirects: {
-		'/': '/en/',
 		'/about/': '/en/about/',
 		'/services/': '/en/services/',
 	},
