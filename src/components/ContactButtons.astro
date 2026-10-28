@@ -9,8 +9,10 @@ interface Props {
 	class?: string;
 	// Botones a todo el ancho disponible (barra fija del móvil)
 	stretch?: boolean;
+	// Mensaje con el que se abre el chat de WhatsApp
+	waText?: string;
 }
-const { lang, class: className = '', stretch = false } = Astro.props;
+const { lang, class: className = '', stretch = false, waText } = Astro.props;
 const t = useTranslations(lang);
 const base =
 	'inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-base font-bold text-white transition-colors duration-150 active:translate-y-px';
@@ -21,7 +23,7 @@ const base =
 		<Icon name="phone" />
 		{t('header.call')}
 	</a>
-	<a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label={t('contact.whatsappAria')} class:list={[base, 'bg-whatsapp hover:bg-whatsapp-hover', stretch && 'min-w-0 flex-1 px-3 text-sm']}>
+	<a href={waText ? `${WHATSAPP_URL}?text=${encodeURIComponent(waText)}` : WHATSAPP_URL} target="_blank" rel="noopener" aria-label={t('contact.whatsappAria')} class:list={[base, 'bg-whatsapp hover:bg-whatsapp-hover', stretch && 'min-w-0 flex-1 px-3 text-sm']}>
 		<Icon name="whatsapp" />
 		{t('header.whatsapp')}
 	</a>

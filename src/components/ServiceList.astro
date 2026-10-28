@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import { useTranslations } from '../i18n/utils';
-import type { Locale } from '../consts';
+import { SERVICES, type Locale } from '../consts';
 
 interface Props {
 	lang: Locale;
@@ -11,11 +11,12 @@ interface Props {
 const { lang, headingLevel = 'h3' } = Astro.props;
 const t = useTranslations(lang);
 const Heading = headingLevel;
-const services = [
-	{ icon: 'car', title: t('service.primerotitle'), desc: t('service.primerodesc') },
-	{ icon: 'airplane', title: t('service.segundotitle'), desc: t('service.segundodesc') },
-	{ icon: 'bed', title: t('service.tercerotitle'), desc: t('service.tercerodesc') },
-] as const;
+const services = SERVICES.map((s) => ({
+	icon: s.icon,
+	title: t(`service.${s.key}title` as any),
+	desc: t(`service.${s.key}desc` as any),
+	href: `/${lang}/services/${s.slug}/`,
+}));
 ---
 
 <ul class="divide-y divide-line border-y border-line">
@@ -26,9 +27,12 @@ const services = [
 					<span class="grid size-10 shrink-0 place-items-center rounded-full bg-paper text-ink ring-1 ring-line">
 						<Icon name={s.icon} size={22} />
 					</span>
-					{s.title}
+					<a href={s.href} class="underline-offset-4 hover:text-call hover:underline">{s.title}</a>
 				</Heading>
-				<p class="max-w-prose leading-relaxed text-ink/85 md:pt-2">{s.desc}</p>
+				<div class="md:pt-2">
+					<p class="max-w-prose leading-relaxed text-ink/85">{s.desc}</p>
+					<a href={s.href} class="mt-2 inline-flex py-1 font-semibold text-call underline-offset-4 hover:underline">{t('lead.more')} →</a>
+				</div>
 			</li>
 		))
 	}

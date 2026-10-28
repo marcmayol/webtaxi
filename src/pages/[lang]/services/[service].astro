@@ -1,0 +1,96 @@
+---
+import Page from '../../../layouts/Page.astro';
+import ContactButtons from '../../../components/ContactButtons.astro';
+import Icon from '../../../components/Icon.astro';
+import { useTranslations } from '../../../i18n/utils';
+import { AREA_SERVED, BUSINESS_ID, LOCALES, SERVICES, SITE_URL, businessSchema, type Locale, type Service } from '../../../consts';
+
+export function getStaticPaths() {
+	return LOCALES.flatMap((lang) => SERVICES.map((service) => ({ params: { lang, service: service.slug }, props: { service } })));
+}
+
+const lang = Astro.params.lang as Locale;
+const { service } = Astro.props as { service: Service };
+const t = useTranslations(lang);
+const tk = (key: string) => t(key as any);
+
+const title = tk(`service.${service.key}title`);
+const desc = tk(`service.${service.key}desc`);
+const waText = `${t('lead.wa')} ${title}`;
+const url = `${SITE_URL}/${lang}/services/${service.slug}/`;
+const others = SERVICES.filter((s) => s.slug !== service.slug);
+const facts = [
+	{ icon: 'clock', text: t('footer.hours') },
+	{ icon: 'car', text: t('lead.seats') },
+	{ icon: 'receipt', text: t('lead.rate') },
+] as const;
+
+const schema = [
+	businessSchema(lang, t('seo.description')),
+	{
+		'@type': 'Service',
+		name: title,
+		serviceType: title,
+		description: desc,
+		url,
+		provider: { '@id': BUSINESS_ID },
+		areaServed: AREA_SERVED.map((name) => ({ '@type': 'Place', name })),
+	},
+];
+---
+
+<Page lang={lang} path={`services/${service.slug}/`} title={tk(`${service.seo}.seo.title`)} description={tk(`${service.seo}.seo.description`)} schema={schema} waText={waText}>
+	<section class="mt-8 rounded-2xl bg-ink px-6 py-10 text-white sm:mt-12 sm:px-10 sm:py-14">
+		<span class="grid size-12 place-items-center rounded-full bg-white/10">
+			<Icon name={service.icon} size={26} />
+		</span>
+		<h1 class="mt-5 max-w-2xl text-3xl leading-[1.1] font-extrabold tracking-tight text-balance hyphens-auto [overflow-wrap:anywhere] sm:text-5xl">{title}</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/85">{desc}</p>
+		<ContactButtons lang={lang} waText={waText} class="mt-8 flex-wrap" />
+	</section>
+
+	<section class="mt-14 grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+		<div>
+			<h2 class="mb-5 text-2xl font-bold tracking-tight">{t('lead.facts')}</h2>
+			<ul class="flex flex-col gap-4">
+				{
+					facts.map((f) => (
+						<li class="flex items-center gap-3 text-lg">
+							<Icon name={f.icon} size={24} />
+							{f.text}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div>
+			<h2 class="mb-5 text-2xl font-bold tracking-tight">{t('lead.areas')}</h2>
+			<ul class="flex flex-wrap gap-2">
+				{AREA_SERVED.map((a) => <li class="rounded-full border border-line bg-surface px-4 py-2">{a}</li>)}
+			</ul>
+		</div>
+	</section>
+
+	<section class="mt-14 border-y border-line py-10">
+		<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">{t('lead.cta.title')}</h2>
+		<p class="mt-3 text-lg text-ink/85">{t('lead.cta.desc')}</p>
+		<ContactButtons lang={lang} waText={waText} class="mt-6 flex-wrap" />
+	</section>
+
+	<section class="mt-14">
+		<h2 class="mb-5 text-2xl font-bold tracking-tight">{t('lead.others')}</h2>
+		<ul class="grid gap-3 sm:grid-cols-2">
+			{
+				others.map((s) => (
+					<li>
+						<a href={`/${lang}/services/${s.slug}/`} class="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 font-semibold transition-colors duration-150 hover:border-ink">
+							<Icon name={s.icon} size={22} />
+							{tk(`service.${s.key}title`)}
+							<span class="ml-auto" aria-hidden="true">→</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</Page>

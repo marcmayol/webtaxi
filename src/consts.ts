@@ -50,3 +50,11 @@ export function businessSchema(lang: Locale, description: string) {
 		availableLanguage: ['es', 'en', 'de', 'fr'],
 	};
 }
+
+// Una página por servicio en /<lang>/services/<slug>/; `key` es el prefijo de sus textos en ui.ts
+export const SERVICES = [
+	{ slug: 'door-to-door', key: 'primero', seo: 's1', icon: 'car' },
+	{ slug: 'airport-pickup', key: 'segundo', seo: 's2', icon: 'airplane' },
+	{ slug: 'hotel-airport', key: 'tercero', seo: 's3', icon: 'bed' },
+] as const;
+export type Service = (typeof SERVICES)[number];
