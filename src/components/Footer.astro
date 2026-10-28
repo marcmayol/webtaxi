@@ -16,21 +16,21 @@ const year = new Date().getFullYear();
 			<p class="font-display text-xl font-bold">{BUSINESS_NAME}</p>
 			<p class="text-muted">{t('footer.area')}</p>
 			<p class="text-muted">{t('footer.hours')}</p>
-			<p class="mt-2 flex flex-col gap-1">
-				<a href={`tel:${PHONE_E164}`} class="w-fit font-display text-2xl font-bold tabular-nums hover:text-accent">{PHONE_DISPLAY}</a>
-				<a href={WHATSAPP_URL} target="_blank" rel="noopener" class="w-fit underline underline-offset-4 hover:text-whatsapp">WhatsApp</a>
-				<a href={`mailto:${EMAIL}`} class="w-fit max-w-full underline underline-offset-4 [overflow-wrap:anywhere] hover:text-call">{EMAIL}</a>
+			<p class="mt-2 flex flex-col">
+				<a href={`tel:${PHONE_E164}`} class="inline-flex min-h-11 w-fit items-center font-display text-2xl font-bold tabular-nums hover:text-accent">{PHONE_DISPLAY}</a>
+				<a href={WHATSAPP_URL} target="_blank" rel="noopener" class="inline-flex min-h-11 w-fit items-center underline underline-offset-4 hover:text-whatsapp">WhatsApp</a>
+				<a href={`mailto:${EMAIL}`} class="inline-flex min-h-11 w-fit max-w-full items-center underline underline-offset-4 [overflow-wrap:anywhere] hover:text-call">{EMAIL}</a>
 			</p>
 		</div>
-		<nav class="flex flex-col gap-2 md:items-end" aria-label={BUSINESS_NAME}>
-			<a href={`/${lang}/services/`} class="w-fit py-1 underline underline-offset-4 hover:text-call">{t('footer.service')}</a>
-			<a href={`/${lang}/about/`} class="w-fit py-1 underline underline-offset-4 hover:text-call">{t('footer.about')}</a>
+		<nav class="flex flex-col md:items-end" aria-label={BUSINESS_NAME}>
+			<a href={`/${lang}/services/`} class="inline-flex min-h-11 w-fit items-center underline underline-offset-4 hover:text-call">{t('footer.service')}</a>
+			<a href={`/${lang}/about/`} class="inline-flex min-h-11 w-fit items-center underline underline-offset-4 hover:text-call">{t('footer.about')}</a>
 		</nav>
 	</div>
 	<div class="border-t border-line">
 		<div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-4 py-4 text-sm text-muted sm:px-8">
 			<p>&copy; {year} {BUSINESS_NAME}. {t('footer.rights')}</p>
-			<p><a href="https://marcmayol.com/" class="hover:text-ink">{t('footer.credit')}</a></p>
+			<p><a href="https://marcmayol.com/" class="inline-flex min-h-11 items-center hover:text-ink">{t('footer.credit')}</a></p>
 		</div>
 	</div>
 </footer>

@@ -58,7 +58,7 @@ const facts = [
 		</div>
 		<div class="relative z-10 mx-3 -mt-14 flex flex-col gap-3 rounded-3xl bg-surface p-5 shadow-card sm:absolute sm:bottom-7 sm:left-7 sm:mx-0 sm:mt-0 sm:w-[23rem] sm:p-6">
 			<p class="text-sm font-semibold text-pine">{t('home.stop')}</p>
-			<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class="w-fit font-display text-4xl font-bold tracking-tight tabular-nums hover:text-accent">{PHONE_DISPLAY.replace('+34 ', '')}</a>
+			<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class="inline-flex min-h-12 w-fit items-center font-display text-4xl font-bold tracking-tight tabular-nums hover:text-accent">{PHONE_DISPLAY.replace('+34 ', '')}</a>
 			<ContactButtons lang={lang} stretch class="hidden sm:flex" />
 		</div>
 	</section>
@@ -87,7 +87,7 @@ const facts = [
 		<div>
 			<h2 class="text-4xl font-bold hyphens-auto [overflow-wrap:anywhere] sm:text-5xl">María &amp; Xisco</h2>
 			<p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">{t('home.family.desc')}</p>
-			<a href={`/${lang}/about/`} class="mt-4 inline-flex py-1 font-bold text-accent underline-offset-4 hover:underline">{t('home.family.link')} →</a>
+			<a href={`/${lang}/about/`} class="mt-3 inline-flex min-h-11 items-center font-bold text-accent underline-offset-4 hover:underline">{t('home.family.link')} →</a>
 		</div>
 	</section>
 </Page>

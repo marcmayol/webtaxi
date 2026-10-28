@@ -23,9 +23,10 @@ export const LOCALE_TAGS: Record<Locale, { hreflang: string; og: string }> = {
 // Negocio único; cada página lo referencia por @id en vez de declararlo de nuevo.
 export function businessSchema(lang: Locale, description: string) {
 	return {
-		'@type': 'TaxiService',
+		'@type': ['TaxiService', 'LocalBusiness'],
 		'@id': BUSINESS_ID,
 		name: BUSINESS_NAME,
+		alternateName: 'Taxi 21 Cala Ratjada',
 		description,
 		url: `${SITE_URL}/${lang}/`,
 		logo: `${SITE_URL}/img/logo-512.png`,
@@ -33,21 +34,26 @@ export function businessSchema(lang: Locale, description: string) {
 		telephone: PHONE_E164,
 		email: EMAIL,
 		address: {
+			// Negocio sin local abierto al público, como en la ficha de Google: sin calle
 			'@type': 'PostalAddress',
-			streetAddress: 'Carrer Bustamante',
 			addressLocality: 'Cala Rajada',
 			addressRegion: 'Illes Balears',
 			postalCode: '07590',
 			addressCountry: 'ES',
 		},
-		areaServed: AREA_SERVED.map((name) => ({ '@type': 'Place', name })),
+		areaServed: AREA_SERVED.map((name) => ({ '@type': 'City', name })),
 		openingHoursSpecification: {
 			'@type': 'OpeningHoursSpecification',
 			dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 			opens: '00:00',
 			closes: '23:59',
 		},
-		availableLanguage: ['es', 'en', 'de', 'fr'],
+		contactPoint: {
+			'@type': 'ContactPoint',
+			telephone: PHONE_E164,
+			contactType: 'reservations',
+			availableLanguage: ['Spanish', 'English', 'German', 'French'],
+		},
 	};
 }
 

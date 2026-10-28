@@ -33,5 +33,12 @@ export default defineConfig({
 			defaultLocale: 'en',
 			locales: { es: 'es', en: 'en', de: 'de', fr: 'fr' },
 		},
+		// x-default apunta a la versión en inglés, igual que en el <head>
+		serialize(item) {
+			// links es compartido entre las URLs de un mismo grupo: crear uno nuevo
+			const links = (item.links ?? []).filter((l) => l.lang !== 'x-default');
+			const en = links.find((l) => l.lang === 'en');
+			return en ? { ...item, links: [...links, { lang: 'x-default', url: en.url }] } : item;
+		},
 	})],
 });
