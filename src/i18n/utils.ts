@@ -1,4 +1,5 @@
 import { ui, defaultLang } from './ui';
+import { LOCALES } from '../consts';
 
 export function getLangFromUrl(url: URL) {
     const parts = url.pathname.split('/');
@@ -34,4 +35,8 @@ export function  changeroutelang(url: URL, lang: any) {
             return  parts.join('/');
         }
     }
+}
+// Una ruta por idioma para las páginas de src/pages/[lang]/
+export function getLangPaths() {
+    return LOCALES.map((lang) => ({ params: { lang } }));
 }

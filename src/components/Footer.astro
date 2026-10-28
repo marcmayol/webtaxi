@@ -1,51 +1,36 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-const year = new Date().getFullYear();
-let langCode = Astro.currentLocale;
-console.log('Current locale:', Astro.currentLocale);
-if(langCode == undefined || !["en", "es", "fr", "de"].includes(langCode)) {
-	langCode = 'en';
+import { useTranslations } from '../i18n/utils';
+import { BUSINESS_NAME, EMAIL, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL, type Locale } from '../consts';
+
+interface Props {
+	lang: Locale;
 }
-const lang = getLangFromUrl(Astro.url) || langCode;
+const { lang } = Astro.props;
 const t = useTranslations(lang);
+const year = new Date().getFullYear();
 ---
 
-<footer class="flex justify-center pt-5">
-	<div class="flex max-w-[960px] flex-1 flex-col">
-		<footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href="#"  title="instagram">
-					<div class="text-[#637688]" data-icon="InstagramLogo" data-size="24px"
-						 data-weight="regular">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
-							 viewBox="0 0 256 256">
-							<path
-								d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
-							></path>
-						</svg>
-					</div>
-				</a>
-				<a href="#" title="facebook">
-					<div class="text-[#637688]" data-icon="FacebookLogo" data-size="24px" data-weight="regular">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
-							 viewBox="0 0 256 256">
-							<path
-								d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"
-							></path>
-						</svg>
-					</div>
-				</a>
-			</div>
-			<div class="flex flex-wrap justify-center gap-4">
-				<a href={"/"+lang+"/about"}  title="about" class="text-base underline">
-					{t('footer.about')}
-				</a>
-				<a href={"/"+lang+"/services"} title="services" class=" text-base underline">
-					{t('footer.service')}
-				</a>
-			</div>
-			<p class="text-[#637688] text-sm font-normal leading-normal"> &copy; <span id="year">{year}</span> Taxi 21 Cala Ratjada. All rights reserved.</p>
-			<p class="text-[#637688] text-sm"><a href="https://marcmayol/es" title="marcmayol">Created by Marc Mayol with  <span class="px-2 text-[#000000]">&#9829;</span>  from <span class="text-[#000000]">&#x1F334;</span> Mallorca </a> </p>
-		</footer>
+<footer class="mt-16 border-t border-line bg-surface pb-24 md:pb-0">
+	<div class="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.4fr_1fr]">
+		<div class="flex flex-col gap-2">
+			<p class="text-lg font-bold">{BUSINESS_NAME}</p>
+			<p class="text-muted">{t('footer.area')}</p>
+			<p class="text-muted">{t('footer.hours')}</p>
+			<p class="mt-2 flex flex-col gap-1">
+				<a href={`tel:${PHONE_E164}`} class="w-fit text-xl font-bold hover:text-call">{PHONE_DISPLAY}</a>
+				<a href={WHATSAPP_URL} target="_blank" rel="noopener" class="w-fit underline underline-offset-4 hover:text-whatsapp">WhatsApp</a>
+				<a href={`mailto:${EMAIL}`} class="w-fit underline underline-offset-4 hover:text-call">{EMAIL}</a>
+			</p>
+		</div>
+		<nav class="flex flex-col gap-2 md:items-end" aria-label={BUSINESS_NAME}>
+			<a href={`/${lang}/services/`} class="w-fit py-1 underline underline-offset-4 hover:text-call">{t('footer.service')}</a>
+			<a href={`/${lang}/about/`} class="w-fit py-1 underline underline-offset-4 hover:text-call">{t('footer.about')}</a>
+		</nav>
+	</div>
+	<div class="border-t border-line">
+		<div class="mx-auto flex max-w-5xl flex-wrap justify-between gap-2 px-4 py-4 text-sm text-muted sm:px-6">
+			<p>&copy; {year} {BUSINESS_NAME}. {t('footer.rights')}</p>
+			<p><a href="https://marcmayol.com/" class="hover:text-ink">{t('footer.credit')}</a></p>
+		</div>
 	</div>
 </footer>

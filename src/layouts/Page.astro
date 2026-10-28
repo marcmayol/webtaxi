@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactButtons from '../components/ContactButtons.astro';
+import type { Locale } from '../consts';
+
+interface Props {
+	lang: Locale;
+	title: string;
+	description: string;
+	keywords?: string;
+	path: string;
+	schema?: object[];
+	noindex?: boolean;
+}
+const { lang, ...head } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+<head>
+	<BaseHead lang={lang} {...head} />
+	<slot name="head" />
+</head>
+<body class="min-h-screen antialiased">
+	<Header lang={lang} />
+	<main class="mx-auto max-w-5xl px-4 sm:px-6">
+		<slot />
+	</main>
+	<Footer lang={lang} />
+	<!-- Llamar y WhatsApp siempre a mano en el móvil -->
+	<div class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-surface/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
+		<ContactButtons lang={lang} stretch />
+	</div>
+</body>
+</html>

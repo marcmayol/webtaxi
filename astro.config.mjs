@@ -7,18 +7,30 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://taxicalaratjada.es/',
-	// base:'test-astro',
 	output: 'static',
+	trailingSlash: 'always',
 	vite: {
 		plugins: [tailwindcss()],
 	},
 	i18n: {
-		locales: ["es", "en","De"],
+		locales: ["es", "en", "de", "fr"],
 		defaultLocale: "en",
 		routing: {
 			prefixDefaultLocale: true,
 			redirectToDefaultLocale: false
 		},
 	},
-	integrations: [mdx(), sitemap()],
+	// Las URLs sin idioma llevan a la versión en inglés
+	redirects: {
+		'/': '/en/',
+		'/about/': '/en/about/',
+		'/services/': '/en/services/',
+	},
+	integrations: [mdx(), sitemap({
+		filter: (page) => /\/(es|en|de|fr)\//.test(page),
+		i18n: {
+			defaultLocale: 'en',
+			locales: { es: 'es', en: 'en', de: 'de', fr: 'fr' },
+		},
+	})],
 });

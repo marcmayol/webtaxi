@@ -1,0 +1,30 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { EMAIL, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL, type Locale } from '../consts';
+
+interface Props {
+	lang: Locale;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const rows = [
+	{ label: t('contact.phone'), href: `tel:${PHONE_E164}`, value: PHONE_DISPLAY },
+	{ label: t('contact.whatsapp'), href: WHATSAPP_URL, value: PHONE_DISPLAY, external: true },
+	{ label: t('contact.email'), href: `mailto:${EMAIL}`, value: EMAIL },
+];
+---
+
+<dl class="divide-y divide-line border-y border-line">
+	{
+		rows.map((r) => (
+			<div class="grid gap-1 py-4 md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] md:gap-8">
+				<dt class="text-muted">{r.label}</dt>
+				<dd class="min-w-0 break-words">
+					<a href={r.href} class="font-semibold underline-offset-4 hover:underline" {...(r.external ? { target: '_blank', rel: 'noopener' } : {})}>
+						{r.value}
+					</a>
+				</dd>
+			</div>
+		))
+	}
+</dl>

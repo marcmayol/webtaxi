@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+import { PHONE_E164, WHATSAPP_URL } from '../consts';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../consts';
+
+interface Props {
+	lang: Locale;
+	class?: string;
+	// Botones a todo el ancho disponible (barra fija del móvil)
+	stretch?: boolean;
+}
+const { lang, class: className = '', stretch = false } = Astro.props;
+const t = useTranslations(lang);
+const base =
+	'inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-base font-bold text-white transition-colors duration-150 active:translate-y-px';
+---
+
+<div class:list={['flex gap-3', className]}>
+	<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class:list={[base, 'bg-call hover:bg-call-hover', stretch && 'min-w-0 flex-1 px-3 text-sm']}>
+		<Icon name="phone" />
+		{t('header.call')}
+	</a>
+	<a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label={t('contact.whatsappAria')} class:list={[base, 'bg-whatsapp hover:bg-whatsapp-hover', stretch && 'min-w-0 flex-1 px-3 text-sm']}>
+		<Icon name="whatsapp" />
+		{t('header.whatsapp')}
+	</a>
+</div>

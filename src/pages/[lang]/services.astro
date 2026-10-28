@@ -1,0 +1,40 @@
+---
+import Page from '../../layouts/Page.astro';
+import ContactButtons from '../../components/ContactButtons.astro';
+import ServiceList from '../../components/ServiceList.astro';
+import { getLangPaths, useTranslations } from '../../i18n/utils';
+import { BUSINESS_ID, SITE_URL, businessSchema, type Locale } from '../../consts';
+
+export const getStaticPaths = getLangPaths;
+const lang = Astro.params.lang as Locale;
+const t = useTranslations(lang);
+
+const services = [
+	[t('service.primerotitle'), t('service.primerodesc')],
+	[t('service.segundotitle'), t('service.segundodesc')],
+	[t('service.tercerotitle'), t('service.tercerodesc')],
+];
+const schema = [
+	businessSchema(lang, t('seo.description')),
+	...services.map(([name, description]) => ({
+		'@type': 'Service',
+		serviceType: name,
+		description,
+		provider: { '@id': BUSINESS_ID },
+		url: `${SITE_URL}/${lang}/services/`,
+	})),
+];
+---
+
+<Page lang={lang} path="services/" title={t('services.seo.title')} description={t('services.seo.description')} keywords={t('seo.keywords')} schema={schema}>
+	<section class="mt-10 sm:mt-14">
+		<h1 class="text-3xl font-extrabold tracking-tight hyphens-auto [overflow-wrap:anywhere] sm:text-4xl">{t('service.title')}</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink/85">{t('service.desc')}</p>
+	</section>
+
+	<section class="mt-10">
+		<ServiceList lang={lang} headingLevel="h2" />
+	</section>
+
+	<ContactButtons lang={lang} class="mt-10 flex-wrap" />
+</Page>

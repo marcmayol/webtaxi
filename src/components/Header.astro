@@ -1,65 +1,59 @@
 ---
-import {changeroutelang, getLangFromUrl, useTranslations,} from '../i18n/utils';
-import {languages} from '../i18n/ui';
-import {Globe} from '@lucide/astro';
+import { changeroutelang, useTranslations } from '../i18n/utils';
+import { languages } from '../i18n/ui';
+import { BUSINESS_NAME, PHONE_DISPLAY, PHONE_E164, type Locale } from '../consts';
+import Icon from './Icon.astro';
 
-const lang = getLangFromUrl(Astro.url);
+interface Props {
+	lang: Locale;
+}
+const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f4] px-2 px-md-5  py-3 ">
-    <div class="flex items-center text-[#111518]">
-
-            <div class="w-10 h-10 flex-shrink-0">
-            <img
-                    src="/img/logo_negro_tranparente.png"
-                    alt="Taxi 21 Cala Ratjada car"
-                    class="w-full h-full object-contain"
-                    title="Taxi 21 Cala Ratjada car"
-            />
-        </div>
-        <strong class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">
-            <a href={"/"+lang} title="home"> Taxi 21 Cala Ratjada </a>
-        </strong>
-
-    </div>
-    <div class="flex flex-1 justify-end gap-8">
-        <div class="flex gap-2" itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
-            <button role="button" title="select language" id="languageButton" data-languageButton
-                    class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full  px-4 py-1 border text-sm font-bold leading-normal tracking-[0.015em] hover:"
-            >
-                <Globe/>
-                <span class=" hidden md:flex truncate  pl-1"> {t('nav.button')}</span>
-            </button>
-        </div>
-    </div>
-
+<header class="border-b border-line bg-surface">
+	<div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+		<a href={`/${lang}/`} class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink">
+			<img src="/img/logo-96.webp" alt="" width="40" height="40" class="size-10" />
+			{BUSINESS_NAME}
+		</a>
+		<div class="flex items-center gap-3">
+			<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class="hidden items-center gap-2 font-bold text-ink hover:text-call md:inline-flex">
+				<Icon name="phone" />
+				{PHONE_DISPLAY}
+			</a>
+			<details class="relative" data-langmenu>
+				<summary class="flex h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-line px-4 text-sm font-bold text-ink transition-colors duration-150 hover:border-ink [&::-webkit-details-marker]:hidden">
+					<Icon name="globe" />
+					<span class="uppercase">{lang}</span>
+					<span class="sr-only">{t('nav.button')}</span>
+				</summary>
+				<ul class="absolute right-0 z-20 mt-2 min-w-40 rounded-xl border border-line bg-surface py-1 shadow-lg">
+					{
+						Object.entries(languages).map(([code, label]) => (
+							<li>
+								<a
+									href={changeroutelang(Astro.url, code)}
+									hreflang={code}
+									lang={code}
+									aria-current={code === lang ? 'true' : undefined}
+									class:list={['block px-4 py-2.5 hover:bg-paper', code === lang ? 'font-bold text-ink' : 'text-muted']}
+								>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</details>
+		</div>
+	</div>
 </header>
-<nav data-langmenu id="langmenu" class="flex items-center bg-white hidden">
-    <ul class="py-1 w-full bg-gray-100" role="menu" aria-orientation="vertical">
-        {
-            Object.entries(languages).filter(([code]) => code !== lang).map(([code, label]) => (
-                    <li class=" w-full text-center"><a href={changeroutelang(Astro.url, code)}
-                                                       class="block px-4 py-2 text-md text-gray-700 hover:bg-gray-200 transition"
-                                                       role="menuitem"> <span class="border-b-2 border-current pb-1">{label}</span></a></li>
-            ))
-        }
-
-    </ul>
-</nav>
 
 <script is:inline>
-    let langbutton = document.getElementById('languageButton');
-    let langmenu = document.getElementById('langmenu');
-
-    langbutton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        langmenu.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!langmenu.contains(e.target) && !langbutton.contains(e.target)) {
-            langmenu.classList.add('hidden');
-        }
-    });
+	// Cierra el menú de idioma al pulsar fuera
+	document.addEventListener('click', (e) => {
+		const menu = document.querySelector('[data-langmenu]');
+		if (menu && menu.open && !menu.contains(e.target)) menu.open = false;
+	});
 </script>

@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../consts';
+
+interface Props {
+	lang: Locale;
+	// Nivel del título de cada servicio según la página
+	headingLevel?: 'h2' | 'h3';
+}
+const { lang, headingLevel = 'h3' } = Astro.props;
+const t = useTranslations(lang);
+const Heading = headingLevel;
+const services = [
+	{ icon: 'car', title: t('service.primerotitle'), desc: t('service.primerodesc') },
+	{ icon: 'airplane', title: t('service.segundotitle'), desc: t('service.segundodesc') },
+	{ icon: 'bed', title: t('service.tercerotitle'), desc: t('service.tercerodesc') },
+] as const;
+---
+
+<ul class="divide-y divide-line border-y border-line">
+	{
+		services.map((s) => (
+			<li class="grid gap-2 py-6 md:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] md:gap-8">
+				<Heading class="flex items-center gap-3 text-lg font-bold">
+					<span class="grid size-10 shrink-0 place-items-center rounded-full bg-paper text-ink ring-1 ring-line">
+						<Icon name={s.icon} size={22} />
+					</span>
+					{s.title}
+				</Heading>
+				<p class="max-w-prose leading-relaxed text-ink/85 md:pt-2">{s.desc}</p>
+			</li>
+		))
+	}
+</ul>

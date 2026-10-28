@@ -1,0 +1,88 @@
+---
+import Page from '../../layouts/Page.astro';
+import ContactButtons from '../../components/ContactButtons.astro';
+import ContactDetails from '../../components/ContactDetails.astro';
+import ServiceList from '../../components/ServiceList.astro';
+import Icon from '../../components/Icon.astro';
+import { getLangPaths, useTranslations } from '../../i18n/utils';
+import { BUSINESS_ID, BUSINESS_NAME, SITE_URL, businessSchema, type Locale } from '../../consts';
+
+export const getStaticPaths = getLangPaths;
+const lang = Astro.params.lang as Locale;
+const t = useTranslations(lang);
+
+const schema = [
+	{
+		'@type': 'WebSite',
+		'@id': `${SITE_URL}/#website`,
+		url: `${SITE_URL}/${lang}/`,
+		name: BUSINESS_NAME,
+		inLanguage: lang,
+		publisher: { '@id': BUSINESS_ID },
+	},
+	businessSchema(lang, t('seo.description')),
+];
+
+// Pendiente de decidir: sustituir por reseñas reales de Google o quitar la sección
+const reviews = [
+	{ name: t('reviews.primera.title'), when: '2 months ago', text: t('reviews.primeradesc'), avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB7sPLGvlcPnPoipQFFxPXiLiQ7DoeOFdd6iuAvv5JUr3wC2JqFrv8cfLtJJLrwb3d8N0I9lWNLmHgUxNlp5VkSyJQTRDWWfYq9AF97bGyO8PtAJzKWx5Xf86V2z-ZuOzAThzlNdS7cHTiwDmSkmpwqnXv8Dc_2jXzP0yFO-L-ghJppMdHO7t6BXVuP3DcwJscJ7ZK5N21Zvoowf2PiZDS8bjUxeVdlAaxg7IQqopQqr1x0GOiSRBuBUsPXd4_-cWXj1vR1ufbpSw' },
+	{ name: t('reviews.segundatitle'), when: '3 months ago', text: t('reviews.segundadesc'), avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDVxl5groiOCRUEYMYP4-ySYyu25ioA-GSQRmTFYqr_5V2X6fk7ljyRzUN-MfuBdAkmtyJhKBxS6LYaem2s5RFUSLBMxucSRGg-MNDpADQUiYL_s5lniLdhsj23KFvVzoSl74kIMa3-Gj0hWY9YquqHN61_lypW1qKCRRmkPz1-husImTew5pXKo7Hk_5k1WjrnPioE89yODQ0no1gesULjzDkakY6NccRhyC_KNlis6T6CmQuWlyfq0aqBJZa6xUD_kZoI16g98w' },
+	{ name: t('reviews.terceratitle'), when: '4 months ago', text: t('reviews.terceradesc'), avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKz1rBfE4NLDomZUkrDkKcSNfPySMRgoyfDrFztYnnx9TB52PIrU4MYuUZVTkjtpHL0MlctDKq4b1L0DtIYSavVTit1Mu3GyTkxZ5pgK5M50v-aUbeNUczrkpadB8ppOW1LiIGqyEgxyahusWUd5Pb3AlQexsp6Wj2q072FivmmM5E8huDy9DdGq2YBg-UHyHnFPQ_AE78I5UY0BlGAM_B8G35SzKWmgHBYj9vyTmQxtflo4YivXOSqSZxyk0uNXAeitonNJVHdA' },
+];
+---
+
+<Page lang={lang} path="" title={t('seo.title')} description={t('seo.description')} keywords={t('seo.keywords')} schema={schema}>
+	<link slot="head" rel="preload" as="image" type="image/webp" imagesrcset="/img/taxi-800.webp 800w, /img/taxi-1280.webp 1280w, /img/taxi-1920.webp 1920w" imagesizes="(min-width: 1024px) 976px, 100vw" fetchpriority="high" />
+
+	<section class="relative mt-4 overflow-hidden rounded-2xl bg-ink sm:mt-6">
+		<img
+			src="/img/taxi-1280.webp"
+			srcset="/img/taxi-800.webp 800w, /img/taxi-1280.webp 1280w, /img/taxi-1920.webp 1920w"
+			sizes="(min-width: 1024px) 976px, 100vw"
+			width="1280"
+			height="960"
+			alt={BUSINESS_NAME}
+			fetchpriority="high"
+			class="absolute inset-0 size-full object-cover object-[50%_40%]"
+		/>
+		<div class="absolute inset-0 bg-linear-to-t from-black/85 via-black/55 to-black/10"></div>
+		<div class="relative flex min-h-[26rem] flex-col justify-end gap-5 p-6 sm:min-h-[30rem] sm:p-10">
+			<h1 class="max-w-2xl text-4xl leading-[1.05] font-extrabold tracking-tight text-balance hyphens-auto text-white [overflow-wrap:anywhere] sm:text-5xl">{t('header.title')}</h1>
+			<p class="max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg">{t('header.description')}</p>
+			<ContactButtons lang={lang} class="flex-wrap" />
+		</div>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">{t('service.title')}</h2>
+		<ServiceList lang={lang} />
+	</section>
+
+	<section class="mt-16">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">{t('reviews.title')}</h2>
+		<ul class="grid gap-8 md:grid-cols-3 md:gap-6">
+			{
+				reviews.map((r) => (
+					<li class="flex flex-col gap-3">
+						<div class="flex items-center gap-3">
+							<img src={r.avatar} alt="" width="40" height="40" loading="lazy" class="size-10 rounded-full object-cover" />
+							<div>
+								<p class="font-semibold">{r.name}</p>
+								<p class="text-sm text-muted">{r.when}</p>
+							</div>
+						</div>
+						<div class="flex gap-0.5" aria-label="5/5">
+							{[1, 2, 3, 4, 5].map(() => <Icon name="star" size={18} />)}
+						</div>
+						<p class="leading-relaxed text-ink/85">{r.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section class="mt-16">
+		<h2 class="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">{t('contact.title')}</h2>
+		<ContactDetails lang={lang} />
+	</section>
+</Page>
