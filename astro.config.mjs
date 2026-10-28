@@ -8,6 +8,9 @@ export default defineConfig({
 	site: 'https://taxicalaratjada.es/',
 	output: 'static',
 	trailingSlash: 'always',
+	build: {
+		inlineStylesheets: 'auto',
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},

@@ -15,7 +15,7 @@ interface Props {
 const { lang, class: className = '', stretch = false, waText } = Astro.props;
 const t = useTranslations(lang);
 const base =
-	'inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-base font-bold text-white transition-colors duration-150 active:translate-y-px';
+	'inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-2xl px-6 text-base font-bold text-white transition-colors duration-150';
 ---
 
 <div class:list={['flex gap-3', className]}>

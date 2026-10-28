@@ -2,7 +2,8 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
-import fontUrl from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
+import fontUrl from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import bodyFontUrl from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
 import { BUSINESS_NAME, LOCALES, LOCALE_TAGS, SITE_URL, type Locale } from '../consts';
 
 interface Props {
@@ -30,12 +31,13 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': sche
 <meta name="description" content={description} />
 <link rel="icon" href="/img/taxi21_icon.ico" type="image/x-icon" />
 <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={bodyFontUrl} as="font" type="font/woff2" crossorigin />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 <meta name="application-name" content={BUSINESS_NAME} />
 <meta name="author" content={BUSINESS_NAME} />
 <link rel="author" href="/humans.txt" />
-<meta name="theme-color" content="#fbfbfa" />
+<meta name="theme-color" content="#f7f3ee" />
 {noindex ? <meta name="robots" content="noindex, follow" /> : <meta name="robots" content="index, follow" />}
 {keywords && <meta name="keywords" content={keywords} />}
 

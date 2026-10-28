@@ -7,6 +7,9 @@ export const languages = {
 export const defaultLang = 'en';
 export const ui = {
     es: {
+        "home.family.desc": "Un taxi familiar de Capdepera. María lleva más de 10 años al volante en Mallorca y Xisco hace las noches. Cobramos la tarifa oficial del Ayuntamiento.",
+        "home.family.link": "Conoce a María y Xisco",
+        "home.stop": "Parada en Plaça dels Pins · 24 h",
         "s1.seo.title": "Taxi puerta a puerta en Cala Rajada: te recogemos donde estés",
         "s1.seo.description": "Taxi puerta a puerta en Cala Rajada, Capdepera, Canyamel, Cala Mesquida y Sa Font de Sa Cala. Servicio 24 horas. Llama o escribe por WhatsApp al 645 329 809.",
         "s2.seo.title": "Taxi del aeropuerto de Palma a Cala Rajada: recogida en llegadas",
@@ -30,7 +33,7 @@ export const ui = {
         "footer.hours": "Servicio 24 horas, todos los días",
         "footer.area": "Cala Rajada · Capdepera · Canyamel · Cala Mesquida · Sa Font de Sa Cala",
         "footer.rights": "Todos los derechos reservados.",
-        "footer.credit": "Web hecha por Marc Mayol en Mallorca",
+        "footer.credit": "Web de Marc Mayol",
         "notfound.title": "Esta página no existe",
         "notfound.desc": "Puede que el enlace esté mal o que la página se haya movido. Si necesitas un taxi, llámanos al 645 329 809.",
         "notfound.home": "Volver al inicio",
@@ -83,6 +86,9 @@ export const ui = {
 
     },
     en: {
+        "home.family.desc": "A family taxi from Capdepera. María has been driving in Mallorca for over 10 years and Xisco covers the nights. We charge the official town council fare.",
+        "home.family.link": "Meet María and Xisco",
+        "home.stop": "Taxi rank at Plaça dels Pins · 24 h",
         "s1.seo.title": "Door-to-Door Taxi in Cala Rajada: We Pick You Up Wherever You Are",
         "s1.seo.description": "Door-to-door taxi in Cala Rajada, Capdepera, Canyamel, Cala Mesquida and Sa Font de Sa Cala. 24-hour service. Call or WhatsApp us on +34 645 329 809.",
         "s2.seo.title": "Palma Airport to Cala Rajada Taxi: Pickup at Arrivals",
@@ -105,7 +111,7 @@ export const ui = {
         "footer.hours": "24-hour service, every day",
         "footer.area": "Cala Rajada · Capdepera · Canyamel · Cala Mesquida · Sa Font de Sa Cala",
         "footer.rights": "All rights reserved.",
-        "footer.credit": "Website by Marc Mayol, made in Mallorca",
+        "footer.credit": "Website by Marc Mayol",
         "notfound.title": "This page doesn't exist",
         "notfound.desc": "The link may be wrong or the page may have moved. If you need a taxi, call us on +34 645 329 809.",
         "notfound.home": "Back to home",
@@ -159,6 +165,9 @@ export const ui = {
 
     },
     fr: {
+        "home.family.desc": "Un taxi familial de Capdepera. María conduit à Majorque depuis plus de 10 ans et Xisco assure les nuits. Nous appliquons le tarif officiel de la mairie.",
+        "home.family.link": "Faites connaissance avec María et Xisco",
+        "home.stop": "Station de taxis Plaça dels Pins · 24 h/24",
         "s1.seo.title": "Taxi porte-à-porte à Cala Rajada : on vient vous chercher où vous êtes",
         "s1.seo.description": "Taxi porte-à-porte à Cala Rajada, Capdepera, Canyamel, Cala Mesquida et Sa Font de Sa Cala. Service 24 h/24. Appelez ou écrivez sur WhatsApp au +34 645 329 809.",
         "s2.seo.title": "Taxi de l’aéroport de Palma à Cala Rajada : prise en charge aux arrivées",
@@ -182,7 +191,7 @@ export const ui = {
         "footer.hours": "Service 24 h/24, tous les jours",
         "footer.area": "Cala Rajada · Capdepera · Canyamel · Cala Mesquida · Sa Font de Sa Cala",
         "footer.rights": "Tous droits réservés.",
-        "footer.credit": "Site réalisé par Marc Mayol à Majorque",
+        "footer.credit": "Site de Marc Mayol",
         "notfound.title": "Cette page n’existe pas",
         "notfound.desc": "Le lien est peut-être erroné ou la page a été déplacée. Si vous avez besoin d’un taxi, appelez le +34 645 329 809.",
         "notfound.home": "Retour à l’accueil",
@@ -233,6 +242,9 @@ export const ui = {
         "footer.about": "À propos",
     },
     de: {
+        "home.family.desc": "Ein Familientaxi aus Capdepera. María fährt seit über 10 Jahren auf Mallorca, Xisco übernimmt die Nächte. Wir berechnen den offiziellen Tarif der Gemeinde.",
+        "home.family.link": "María und Xisco kennenlernen",
+        "home.stop": "Taxistand Plaça dels Pins · 24 Std.",
         "s1.seo.title": "Tür-zu-Tür-Taxi in Cala Rajada: Wir holen Sie überall ab",
         "s1.seo.description": "Tür-zu-Tür-Taxi in Cala Rajada, Capdepera, Canyamel, Cala Mesquida und Sa Font de Sa Cala. 24-Stunden-Service. Rufen Sie an oder schreiben Sie per WhatsApp an +34 645 329 809.",
         "s2.seo.title": "Taxi vom Flughafen Palma nach Cala Rajada: Abholung in der Ankunftshalle",
@@ -256,7 +268,7 @@ export const ui = {
         "footer.hours": "24-Stunden-Service, jeden Tag",
         "footer.area": "Cala Rajada · Capdepera · Canyamel · Cala Mesquida · Sa Font de Sa Cala",
         "footer.rights": "Alle Rechte vorbehalten.",
-        "footer.credit": "Website von Marc Mayol, gemacht auf Mallorca",
+        "footer.credit": "Website von Marc Mayol",
         "notfound.title": "Diese Seite gibt es nicht",
         "notfound.desc": "Der Link ist vielleicht falsch oder die Seite wurde verschoben. Wenn Sie ein Taxi brauchen, rufen Sie +34 645 329 809 an.",
         "notfound.home": "Zur Startseite",

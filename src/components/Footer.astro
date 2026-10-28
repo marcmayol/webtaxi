@@ -10,16 +10,16 @@ const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-16 border-t border-line bg-surface pb-24 md:pb-0">
-	<div class="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.4fr_1fr]">
+<footer class="mt-20 bg-paper-2 pb-24 md:pb-0">
+	<div class="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] gap-8 px-4 py-10 sm:px-8 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
 		<div class="flex flex-col gap-2">
-			<p class="text-lg font-bold">{BUSINESS_NAME}</p>
+			<p class="font-display text-xl font-bold">{BUSINESS_NAME}</p>
 			<p class="text-muted">{t('footer.area')}</p>
 			<p class="text-muted">{t('footer.hours')}</p>
 			<p class="mt-2 flex flex-col gap-1">
-				<a href={`tel:${PHONE_E164}`} class="w-fit text-xl font-bold hover:text-call">{PHONE_DISPLAY}</a>
+				<a href={`tel:${PHONE_E164}`} class="w-fit font-display text-2xl font-bold tabular-nums hover:text-accent">{PHONE_DISPLAY}</a>
 				<a href={WHATSAPP_URL} target="_blank" rel="noopener" class="w-fit underline underline-offset-4 hover:text-whatsapp">WhatsApp</a>
-				<a href={`mailto:${EMAIL}`} class="w-fit underline underline-offset-4 hover:text-call">{EMAIL}</a>
+				<a href={`mailto:${EMAIL}`} class="w-fit max-w-full underline underline-offset-4 [overflow-wrap:anywhere] hover:text-call">{EMAIL}</a>
 			</p>
 		</div>
 		<nav class="flex flex-col gap-2 md:items-end" aria-label={BUSINESS_NAME}>
@@ -28,7 +28,7 @@ const year = new Date().getFullYear();
 		</nav>
 	</div>
 	<div class="border-t border-line">
-		<div class="mx-auto flex max-w-5xl flex-wrap justify-between gap-2 px-4 py-4 text-sm text-muted sm:px-6">
+		<div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-4 py-4 text-sm text-muted sm:px-8">
 			<p>&copy; {year} {BUSINESS_NAME}. {t('footer.rights')}</p>
 			<p><a href="https://marcmayol.com/" class="hover:text-ink">{t('footer.credit')}</a></p>
 		</div>

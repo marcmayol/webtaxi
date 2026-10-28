@@ -10,8 +10,8 @@ const t = useTranslations(lang);
 
 <Page lang={lang} path="" title={t('notfound.title')} description={t('notfound.desc')} noindex>
 	<section class="mt-14 mb-8">
-		<h1 class="text-3xl font-extrabold tracking-tight hyphens-auto [overflow-wrap:anywhere] sm:text-4xl">{t('notfound.title')}</h1>
-		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink/85">{t('notfound.desc')}</p>
+		<h1 class="text-4xl font-bold tracking-[-0.035em] hyphens-auto [overflow-wrap:anywhere] sm:text-6xl">{t('notfound.title')}</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{t('notfound.desc')}</p>
 		<ContactButtons lang={lang} class="mt-8 flex-wrap" />
 		<ul class="mt-10 flex flex-wrap gap-x-6 gap-y-2">
 			{Object.entries(languages).map(([code, label]) => <li><a href={`/${code}/`} lang={code} class="underline underline-offset-4 hover:text-call">{label}</a></li>)}

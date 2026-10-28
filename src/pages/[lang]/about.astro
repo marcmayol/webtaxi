@@ -1,6 +1,7 @@
 ---
 import Page from '../../layouts/Page.astro';
 import ContactDetails from '../../components/ContactDetails.astro';
+import ContactButtons from '../../components/ContactButtons.astro';
 import Icon from '../../components/Icon.astro';
 import { getLangPaths, useTranslations } from '../../i18n/utils';
 import { BUSINESS_ID, businessSchema, type Locale } from '../../consts';
@@ -27,27 +28,27 @@ const schema = [
 ---
 
 <Page lang={lang} path="about/" title={t('about.seo.title')} description={t('about.seo.description')} keywords={t('about.seo.keywords')} schema={schema}>
-	<section class="mt-10 sm:mt-14">
-		<h1 class="text-3xl font-extrabold tracking-tight hyphens-auto [overflow-wrap:anywhere] sm:text-4xl">{t('about.title')}</h1>
-		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink/85">{t('about.description')}</p>
+	<section class="pt-6 sm:pt-10">
+		<h1 class="text-4xl font-bold tracking-[-0.035em] hyphens-auto [overflow-wrap:anywhere] sm:text-6xl">{t('about.title')}</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{t('about.description')}</p>
 	</section>
 
 	<section class="mt-14">
-		<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">{t('about.story.title')}</h2>
-		<p class="mt-4 max-w-prose leading-relaxed text-ink/85">{t('about.story.description')}</p>
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('about.story.title')}</h2>
+		<p class="mt-4 max-w-prose leading-relaxed text-muted">{t('about.story.description')}</p>
 	</section>
 
 	<section class="mt-14">
-		<h2 class="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">{t('about.drivers.title')}</h2>
-		<ul class="grid gap-8 md:grid-cols-2">
+		<h2 class="mb-6 text-3xl font-bold sm:text-4xl">{t('about.drivers.title')}</h2>
+		<ul class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
 			{
 				drivers.map((d) => (
 					<li class="flex flex-col gap-4 sm:flex-row sm:items-start">
-						<img src={d.photo} alt={d.name} width="128" height="128" loading="lazy" class="size-28 shrink-0 rounded-full object-cover" />
-						<div>
+						<img src={d.photo} alt={d.name} width="128" height="128" loading="lazy" class="size-32 shrink-0 rounded-full object-cover" />
+						<div class="min-w-0 [overflow-wrap:anywhere]">
 							<h3 class="text-xl font-bold">{d.name}</h3>
 							<p class="text-muted">{d.role}</p>
-							<p class="mt-2 leading-relaxed text-ink/85">{d.text}</p>
+							<p class="mt-2 leading-relaxed text-muted">{d.text}</p>
 						</div>
 					</li>
 				))
@@ -55,18 +56,18 @@ const schema = [
 		</ul>
 	</section>
 
-	<section class="mt-14">
-		<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">{t('about.mision.title')}</h2>
-		<p class="mt-4 max-w-prose leading-relaxed text-ink/85">{t('about.mision.description')}</p>
+	<section class="mt-14 rounded-[1.75rem] bg-paper-2 px-6 py-10 sm:px-12 sm:py-14">
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('about.mision.title')}</h2>
+		<p class="mt-4 max-w-prose text-lg leading-relaxed text-muted">{t('about.mision.description')}</p>
 	</section>
 
 	<section class="mt-14">
-		<h2 class="mb-6 text-2xl font-bold tracking-tight sm:text-3xl">{t('about.chooseus.title')}</h2>
+		<h2 class="mb-6 text-3xl font-bold sm:text-4xl">{t('about.chooseus.title')}</h2>
 		<ul class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-10">
 			{
 				reasons.map((r) => (
 					<li class="flex items-center gap-3 text-lg font-semibold">
-						<Icon name={r.icon} size={24} />
+						<span class="grid size-10 shrink-0 place-items-center rounded-full bg-paper-2 text-pine"><Icon name={r.icon} size={20} /></span>
 						{r.label}
 					</li>
 				))
@@ -75,8 +76,9 @@ const schema = [
 	</section>
 
 	<section class="mt-14">
-		<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">{t('contact.title')}</h2>
-		<p class="mt-4 mb-6 max-w-prose leading-relaxed text-ink/85">{t('about.contact.desc')}</p>
+		<h2 class="text-3xl font-bold sm:text-4xl">{t('contact.title')}</h2>
+		<p class="mt-4 mb-6 max-w-prose leading-relaxed text-muted">{t('about.contact.desc')}</p>
 		<ContactDetails lang={lang} />
+		<ContactButtons lang={lang} class="mt-8 hidden flex-wrap md:flex" />
 	</section>
 </Page>

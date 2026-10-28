@@ -1,7 +1,7 @@
 ---
 import { changeroutelang, useTranslations } from '../i18n/utils';
 import { languages } from '../i18n/ui';
-import { BUSINESS_NAME, PHONE_DISPLAY, PHONE_E164, type Locale } from '../consts';
+import { PHONE_DISPLAY, PHONE_E164, type Locale } from '../consts';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -11,24 +11,20 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<header class="border-b border-line bg-surface">
-	<div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-		<a href={`/${lang}/`} class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-ink">
-			<img src="/img/logo-96.webp" alt="" width="40" height="40" class="size-10" />
-			{BUSINESS_NAME}
+<header class="bg-paper">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-8">
+		<a href={`/${lang}/`} class="flex min-w-0 items-center gap-2.5 font-display text-lg font-bold tracking-tight text-ink sm:text-xl">
+			<img src="/img/logo-96.webp" alt="" width="40" height="40" class="size-9 shrink-0 sm:size-10" />
+			<span class="truncate">Taxi 21 <span class="hidden sm:inline">Cala Rajada</span></span>
 		</a>
-		<div class="flex items-center gap-3">
-			<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class="hidden items-center gap-2 font-bold text-ink hover:text-call md:inline-flex">
-				<Icon name="phone" />
-				{PHONE_DISPLAY}
-			</a>
+		<div class="flex shrink-0 items-center gap-2">
 			<details class="relative" data-langmenu>
-				<summary class="flex h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-line px-4 text-sm font-bold text-ink transition-colors duration-150 hover:border-ink [&::-webkit-details-marker]:hidden">
+				<summary class="flex h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-line bg-surface px-4 text-sm font-bold text-ink transition-colors duration-150 hover:border-ink [&::-webkit-details-marker]:hidden">
 					<Icon name="globe" />
 					<span class="uppercase">{lang}</span>
 					<span class="sr-only">{t('nav.button')}</span>
 				</summary>
-				<ul class="absolute right-0 z-20 mt-2 min-w-40 rounded-xl border border-line bg-surface py-1 shadow-lg">
+				<ul class="absolute right-0 z-40 mt-2 min-w-40 rounded-2xl border border-line bg-surface py-1">
 					{
 						Object.entries(languages).map(([code, label]) => (
 							<li>
@@ -37,7 +33,7 @@ const t = useTranslations(lang);
 									hreflang={code}
 									lang={code}
 									aria-current={code === lang ? 'true' : undefined}
-									class:list={['block px-4 py-2.5 hover:bg-paper', code === lang ? 'font-bold text-ink' : 'text-muted']}
+									class:list={['block px-4 py-2.5 hover:bg-paper-2', code === lang ? 'font-bold text-ink' : 'text-muted']}
 								>
 									{label}
 								</a>
@@ -46,6 +42,10 @@ const t = useTranslations(lang);
 					}
 				</ul>
 			</details>
+			<a href={`tel:${PHONE_E164}`} aria-label={t('contact.callAria')} class="hidden h-11 items-center gap-2 rounded-full bg-call px-5 font-bold text-white tabular-nums transition-colors duration-150 hover:bg-call-hover md:inline-flex">
+				<Icon name="phone" />
+				{PHONE_DISPLAY}
+			</a>
 		</div>
 	</div>
 </header>
